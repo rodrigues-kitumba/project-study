@@ -1,9 +1,10 @@
 @import url('./brands.min.css');
 @import url('./solid.min.css');
 @import url('./fontawesome.min.css');
+@import url('./Poppins-Regular.ttf');
 
-/*------- root -------*/
-:root{
+/*------- Root -------*/
+:root {
     --primary-color: #fff;
     --black: #000;
     --red: #f00;
@@ -12,101 +13,246 @@
     --ts-time: all .4s ease;
 }
 
-*{
+/*----- Global Style -----*/
+html{scroll-behavior: smooth;}
+
+body{background-color: var(--black);}
+
+
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: 'Poppins','Open Sans', Helvetica, Sans-serif;
+    font-family: 'Poppins', 'Open Sans', Helvetica, Sans-serif;
 }
 
 a{
     text-decoration: none;
+    color: var(--primary-color);
 }
 
-ul{
-    list-style: none;
-}
+ul{list-style-type: none;}
 
-html, body{
-    width: 100%;
-    height: 100%;
-}
-
-header{
-    width: 100%;
-    background-color: var(--black);
-}
-
-/*------- Barra de Navegação -------*/
+/*----- Navigation Bar -----*/
 .navbar{
-    width: 80%;
-    height: 80px;
-    margin: 0 auto;
+    width: 100%;
+    padding: 1.2rem;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.brand{
+    justify-content: space-around;
+    background-color: var(--black);
     color: var(--primary-color);
-    text-transform: uppercase;
 }
 
-.brand span{
-    color: var(--red);
-}
-
-.nav-menu{
+.navlist{
     display: flex;
     align-items: center;
-}
-
-.menu-item{
-    margin-left: 1.5rem;
-}
-
-.nav-link{
-    color: var(--primary-color);
+    gap: 20px;
     font-size: 18px;
-    transition: var(--ts-time);
-    position: relative;    
 }
 
-.nav-link::after{
-    content: '';
+.navlist li{
+    position: relative;
+    display: inline-block;
+}
+
+.navlist li:hover::before{
+    scale: 1;
+}
+
+.navlist li::before{
+    content: ' ';
     position: absolute;
     left: 0;
     bottom: -2px;
-    width: 80%;
-    height: 2px;
+    height: 3px;
+    width: 100%;
+    scale: 0 1;
     background-color: var(--red);
-    transform: scaleX(0);
-    transform-origin: right;
+    border-radius: 4px;
+    transform-origin:left;
+    transition: scale 0.35s;
+}
+
+.red{color: var(--red);}
+
+.btn-login{
+    border: 2px solid var(--red);
+    border-radius: 0px 10px;
+    background-color: var(--black);
     transition: var(--ts-time);
+    padding: 8px 30px;
 }
 
-.nav-link:hover{
-    color: var(--red);
+.btn-login:hover{
+    background: transparent;
+    background-color: var(--red);
+    cursor: pointer;
 }
 
-.nav-link:hover::after{
-    transform: scaleX(1);
-    transform-origin: left;
-}
-
-.ctn{
-    color: var(--primary-color);
-    border: 2px solid var(--red-hv);
-    box-shadow: 1px 1px 8px var(--red), -1px -1px 8px var(--red);
-    padding: .8rem 2rem;
-    border-radius: 10px 0;
-}
-
-.btn-login .fa-search{
-    color: var(--primary-color);
-    padding-right: 1rem;
-}
-
+/*----- HeroSection -----*/
 .hero{
+    width: 100%;
+    height: calc(100vh - 4rem);
+    display: flex;
+    align-items: center;
+    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("/assets/img/wllp2.png");
+    background-position: center;
+    background-size: cover;
+}
+
+.anime-description{
+    width: 80%;
+    margin-left: 8%;
+    color: var(--primary-color);
+}
+
+.anime-description p{
+    max-width: 40%;
+}
+
+.anime-description h1{font-size: 34px;}
+
+.anime-info{margin-top: 10px;}
+
+.gender{
+    display: flex;
+    gap: 10px;
+}
+
+.gender-box{
+    margin: 10px 4px;
+    border: 1px solid var(--red);
+    padding: 4px 12px;
+    font-size: 10px;
+    box-shadow: .5px .5px 3px var(--red), -.5px -.5px 1px var(--red);
+    border-radius: 4px;
+    background: linear-gradient(rgba(0, 0, 0, 0.788), rgba(0, 0, 0, 0.788));
+    font-size: 10px;
+    font-weight: 600;
+}
+
+.btn-options{
+    margin-top: 20px;
+    display: inline-block;
+}
+
+.btn{
+    background-image: linear-gradient(to right bottom, #f00,#5a0000);
+    margin-right: 10px;
+    transition: var(--ts-time);
+    padding: 8px 12px;
+    border-radius: 0px 10px;
+    border: 0px solid var(--red);
+}
+
+.btn:hover{scale: 1.1;}
+
+
+/*----- AnimeList Section -----*/
+.anime-section{
+   background-color: var(--black);
+}
+
+.anime-header{
+    margin: 20px 0px;
+    padding-left: 4.2rem;
+}
+
+.title{
+    color: var(--primary-color);
+    font-size: 34px;
     
 }
+
+.line{
+    width: 80px;
+    height: 3px;
+    background-color: var(--red);
+}
+
+.anime-list{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+ .anime-card{
+    width: 180px;
+    height: 320px;
+    background-color: var(--black);
+    text-align: center;
+    border: 1px solid var(--red);
+    margin: 10px;
+    transition: var(--ts-time);
+ }
+
+ .anime-card img{
+    width: 100%;
+ }
+
+ .anime-card-description{
+    color: var(--primary-color);
+    background-color: var(--black);
+ }
+
+ .anime-card-description p{
+    color: var(--gray);
+ }
+
+ .anime-card:hover{scale: 1.1;}
+
+
+ /*----- Footer -----*/
+ footer{
+    width: 100%;
+    margin-top: 30px;
+    padding: 1.2rem;
+    background-color: #131313;
+    color: var(--primary-color);
+ }
+
+ .footer-top{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+ }
+
+.social-media .social-media-link{
+    display: flex;
+    gap: 20px;
+ }
+
+ .social-media-link i{
+    font-size: 20px;
+    transition: var(--ts-time);
+ }
+
+ .social-media-link i:hover{
+    color: var(--red);
+    scale: 1.1;
+ }
+
+ .footer-text{
+    width: 80%;
+    margin: 20px auto 10px auto;
+    text-align: center;
+    color: var(--gray);
+ }
+
+ .footer-bottom{
+    padding: 10px 0px;
+    background-color: var(--red);
+    text-align: center;
+ }
+
+ /*----- Responsivity -----*/
+ @media (max-width:450px){
+
+    .footer-top{
+        gap: 20px;
+    }
+
+}
+
+    
